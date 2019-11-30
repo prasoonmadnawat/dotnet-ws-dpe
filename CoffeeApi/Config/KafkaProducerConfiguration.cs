@@ -1,5 +1,3 @@
-using Confluent.Kafka;
-
 namespace CoffeeApi.Config
 {
     public class KafkaProducerConfiguration
