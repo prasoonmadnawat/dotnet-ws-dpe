@@ -8,7 +8,7 @@ This is a simple web api project with single API that acceps coffee orders and p
 - Confluent.Kafka
 
 ## Coffee Worker App
-This is a dotnet core worker app that subscribes as a consumer to the Kafka topic and prings the messages that are published on the topic.
+This is a dotnet core worker app that subscribes as a consumer to the Kafka topic and prints the messages that are published on the topic.
 
 **Nuget packages used**
 - Confluent.Kafka
