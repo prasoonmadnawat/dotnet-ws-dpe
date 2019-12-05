@@ -6,6 +6,7 @@ This is a simple web api project with single API that acceps coffee orders and p
 
 **Nuget packages used**
 - Confluent.Kafka
+- Microsoft.AspNetCore.Authentication.JwtBearer v3.0.0
 
 **Dockerise the API**
 
@@ -18,6 +19,11 @@ To do that, follow these steps:
 - For docker run command, pass the Kafka configuration using the "ASPNETCORE_" prefix like this:
 `docker run -p 8080:80 -e ASPNETCORE_KafkaConfiguration__BootStrapServers="{your Kafka bootstrap servers}" -e ASPNETCORE_KafkaConfiguration__SaslUsername="{Your Kafka Sasl username}" -e ASPNETCORE_KafkaConfiguration__SaslPasword="{Your Kafka Sasl Password}" -e ASPNETCORE_KafkaConfiguration__Topic="{Your Kafka Topic}"
 --rm -it coffeeapi:latest`
+
+**Adding Authentication to the App**
+
+Use Auth0 as authentication provider for the app.
+
 
 ## Coffee Worker App
 This is a dotnet core worker app that subscribes as a consumer to the Kafka topic and prints the messages that are published on the topic.
