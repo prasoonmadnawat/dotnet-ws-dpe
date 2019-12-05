@@ -1,13 +1,16 @@
+using System;
 using System.Threading.Tasks;
 using CoffeeApi.Connectors;
 using CoffeeApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoffeeApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    //[Authorize]
     public class CoffeeController
     {
         private readonly IMessagePublisher _messagePublisher;
@@ -20,9 +23,17 @@ namespace CoffeeApi.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody] CoffeeOrder coffeeOrder)
+        public async Task<string> Post([FromBody] CoffeeOrder coffeeOrder)
         {
-            await this._messagePublisher.PublishMessageAsync($"{coffeeOrder.CoffeeType} {coffeeOrder.Sugar} {coffeeOrder.MilkType}");
+            try
+            {
+                await this._messagePublisher.PublishMessageAsync($"{coffeeOrder.CoffeeType} {coffeeOrder.Sugar} {coffeeOrder.MilkType}");
+                return "OK";
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
         }
     }
 }
