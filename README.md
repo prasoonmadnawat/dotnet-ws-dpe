@@ -30,3 +30,10 @@ This is a dotnet core worker app that subscribes as a consumer to the Kafka topi
 
 **Nuget packages used**
 - Confluent.Kafka
+
+
+## Coffee Client
+This is a dotnet core console app that makes a request to Auth0 to get access token for the Coffee API and the sends a request to Coffee API with the access token.
+
+**Nuget packages used**
+- Newtonsoft.Json
